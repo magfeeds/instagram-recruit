@@ -1,0 +1,429 @@
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+:root {
+    --font-website: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --color-text: #000;
+    --color-bg: #f0f2f5;
+    --color-site: #3578e5;
+}
+
+b,
+strong {
+    font-weight: 700;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-website);
+    color: var(--color-text);
+    font-size: 1rem;
+    position: relative;
+}
+
+textarea,
+input {
+    font-family: var(--font-website);
+    color: var(--color-text);
+}
+
+i {
+    font-style: italic;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.f {
+    background-color: var(--color-bg);
+    padding: 80px 15px;
+    text-align: center;
+}
+
+.f__lg {
+    width: 240px;
+    margin-bottom: 25px;
+}
+
+.--f {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.--fw {
+    width: 100%;
+}
+
+.--if {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.--a-c {
+    align-items: center;
+}
+
+.--j-s-b {
+    justify-content: space-between;
+}
+
+.--j-s-a {
+    justify-content: space-around;
+}
+
+.--j-c-c {
+    justify-content: center;
+}
+
+.--lh-0 {
+    line-height: 0;
+}
+
+.f__lg-al {
+    width: 600px;
+    max-width: 100%;
+    margin: auto;
+    border: 1px solid var(--color-site);
+    background-color: #fff;
+    margin-bottom: 12px;
+}
+
+.f__lg-al-i {
+    background-color: var(--color-site);
+    padding: 6px;
+}
+
+.f__lg-al p {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.f__m {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    margin: auto;
+    padding: 0 16px 14px 16px;
+    width: 396px;
+    border: 1px solid #dddfe2;
+    max-width: 100%;
+    background-color: #fff;
+}
+
+.f__m-tt {
+    padding: 24px 0 16px 0;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.f__m-al {
+    border: 1px solid #e2c822;
+    background-color: #fff9d7;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+.f__m-al p {
+    font-size: 12px;
+}
+
+input {
+    border-radius: 6px;
+    font-size: 17px;
+    padding: 14px 16px;
+    background-color: #fff;
+    border: 1px solid #dddfe2;
+    color: #1d2129;
+    line-height: 16px;
+    vertical-align: middle;
+    width: 100%;
+    outline: none;
+    box-shadow: none;
+}
+
+.f__g {
+    margin-bottom: 12px;
+}
+
+.btn__lg {
+    background-color: var(--color-site);
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 48px;
+    padding: 0 16px;
+    width: 100%;
+    display: block;
+    color: white;
+    font-weight: 600;
+}
+
+.btn__lg:hover {
+    opacity: 0.8;
+}
+
+.a__l {
+    padding: 16px 0;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.a__l a {
+    font-weight: 500;
+    color: var(--color-site);
+}
+
+.a__l a:hover {
+    text-decoration: underline;
+}
+
+.ft {
+    width: 980px;
+    max-width: 100%;
+    padding: 100px 16px 50px 16px;
+    margin: auto;
+}
+
+.ft__l {
+    gap: 10px;
+}
+
+.ft__l a,
+.ft__l span {
+    color: #737373;
+    font-size: 12px;
+}
+
+.ft__l--o {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #dddfe2;
+    margin-bottom: 10px;
+}
+
+.ft__l--t {
+    margin-bottom: 20px;
+}
+
+.-disabled {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.ld {
+    border: 3px solid #f3f3f3;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-top: 3px solid var(--color-site);
+    border-radius: 50%;
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: auto;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.btn__lg.-disabled {
+    padding: 12px 16px;
+}
+
+.f__g {
+    position: relative;
+}
+
+.f__g-a {
+    display: none;
+    font-size: 13px;
+    color: red;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+
+.f__g svg {
+    display: none;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    fill: red;
+    z-index: 1;
+}
+
+.f__g-e input {
+    border-color: red !important;
+}
+
+.f__g-e svg {
+    display: block;
+}
+
+.f__g-a-e {
+    display: block;
+}
+
+.f__g-icspw {
+    display: none;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    line-height: 0;
+}
+
+.f__g-icspw.-show {
+    display: block;
+}
